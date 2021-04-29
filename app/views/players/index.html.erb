@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Players</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Character name</th>
+      <th>Level</th>
+      <th>Experience</th>
+      <th>Race</th>
+      <th>Character class</th>
+      <th>Background</th>
+      <th>Alignment</th>
+      <th>Player name</th>
+      <th colspan="2">Abilities</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td rowspan="6"><%= player.character_name %></td>
+        <td rowspan="6"><%= player.level %></td>
+        <td rowspan="6"><%= player.experience %></td>
+        <td rowspan="6"><%= player.race %></td>
+        <td rowspan="6"><%= player.character_class %></td>
+        <td rowspan="6"><%= player.background %></td>
+        <td rowspan="6"><%= player.alignment %></td>
+        <td rowspan="6"><%= player.player_name %></td>
+        <td>
+        <% @abilities.each do |ability| %>
+          <% if ability.player_id == player.id%>
+              <b><%= ability.name %></b>: <%= ability.level %> 
+              <b>Xp</b>:  <%= ability.experience %> <br>
+          <% end %>
+        <% end %>
+        </td>
+        <td>
+        <%= link_to 'Show', player %><br>
+        <%= link_to 'Edit', edit_player_path(player) %><br>
+        <%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Player', new_player_path %>
