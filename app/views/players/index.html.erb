@@ -1,42 +1,75 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Players</h1>
-
-<table>
+<table class="player-list">
   <thead>
     <tr>
-      <th>Character name</th>
-      <th>Level</th>
+      <th>Character</th>
       <th>Experience</th>
       <th>Race</th>
-      <th>Character class</th>
       <th>Background</th>
       <th>Alignment</th>
       <th>Player name</th>
-      <th colspan="2">Abilities</th>
       <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @players.each do |player| %>
-      <tr>
-        <td rowspan="6"><%= player.character_name %></td>
-        <td rowspan="6"><%= player.level %></td>
-        <td rowspan="6"><%= player.experience %></td>
-        <td rowspan="6"><%= player.race %></td>
-        <td rowspan="6"><%= player.character_class %></td>
-        <td rowspan="6"><%= player.background %></td>
-        <td rowspan="6"><%= player.alignment %></td>
-        <td rowspan="6"><%= player.player_name %></td>
-        <td>
+    <tr>
+      <td class="sao-container" style="display: flex">
+      
+      <%= image_tag(player.character_class.downcase, class:'class-icon') %>
+      <div class="sao-healthbar">
+        
+        <div class="main-container">
+          
+          <div class="character-name">
+            <%= player.character_name %>
+          </div>
+            <div class="health-bar--outline">
+              <div class="health-bar--border">
+                <div class="health-bar--background">
+                  <%= content_tag(:div, "", class: ["health-bar--health"], style: ["--health:#{player.experience}", "--max-health:#{player.experience * 2 + 100}"] ) %> 
+                </div>
+              </div>
+            </div>
+        </div>
+        <%= content_tag(:div, "/", class: ["health-indicator"], style: ["--health:'#{player.experience}';", "--max-health:'#{player.experience * 2 + 100}'"] ) %>
+        <div class="character-level" style="--level: ">
+          Lv. <%= player.level %>
+        </div>
+      </div>
+
+      <div class="menu">
+        <ul class="menu-list">
         <% @abilities.each do |ability| %>
-          <% if ability.player_id == player.id%>
-              <b><%= ability.name %></b>: <%= ability.level %> 
-              <b>Xp</b>:  <%= ability.experience %> <br>
+        <% if ability.player_id == player.id%>
+          <% case ability.name
+              when 'Strength' %>
+              <li class="menu-list-item">Strength <span class="menu-list-text"><%= ability.level %></span></li>
+          <%  when 'Dexterity' %>
+              <li class="menu-list-item">Dexterity <span class="menu-list-text"><%= ability.level %></span></li>
+          <%  when 'Constitution' %>
+              <li class="menu-list-item">Constitution <span class="menu-list-text"><%= ability.level %></span></li>
+          <%  when 'Intelligence' %>
+              <li class="menu-list-item">Intelligence <span class="menu-list-text"><%= ability.level %></span></li>
+          <%  when 'Wisdom' %>
+              <li class="menu-list-item">Wisdom <span class="menu-list-text"><%= ability.level %></span></li>
+          <%  when 'Charisma' %>
+              <li class="menu-list-item">Charisma <span class="menu-list-text"><%= ability.level %></span></li>
           <% end %>
         <% end %>
-        </td>
+      <% end %>
+        </ul>
+      </div>
+      </td>
+
+        <td><%= player.experience %></td>
+        <td><%= player.race %></td>
+        <td><%= player.background %></td>
+        <td><%= player.alignment %></td>
+        <td><%= player.player_name %></td>
         <td>
         <%= link_to 'Show', player %><br>
         <%= link_to 'Edit', edit_player_path(player) %><br>

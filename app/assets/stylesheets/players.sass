@@ -1,0 +1,265 @@
+// Place all the styles related to the players controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+html
+
+
+body
+  height: 100vh
+  background: #868686
+  font-family: 'Nova Square', cursive
+  justify-content: center
+  align-items: center
+
+  .sao-container 
+    position: relative
+    display: flex
+    &:hover 
+      > .menu
+        display: inline-block
+.class-icon
+  width: 45px
+  /*==================== HEALTH BAR ===========================*/
+.sao-healthbar
+  width: 350px
+  height: 50px
+  display: flex
+  
+  .main-container
+    height: 50px
+    width: 350px
+    background: rgba(#000, .6)
+    clip-path: polygon(350px 0, 330px 36.5px, 187px 36.5px, 187px 51px, 0 51px, 0 0)
+    display: flex
+    align-items: center
+    
+    .character-name
+      width: 60px
+      color: #FFF
+      text-align: center
+      
+    .health-bar--outline
+      width: 274px
+      height: 34px
+      background: #FFF
+      clip-path: polygon(262px 20.55px, 122.5px 20.55px, 113.5px 35px, 0 35px, 0 0, 274px 0)
+      display: flex
+      justify-content: center
+      align-items: center
+      
+      .health-bar--border
+        width: 272px
+        height: 32px
+        background: rgba(#000, .6)
+        clip-path: polygon(260px 18px, 120px 18px, 110px 35px, 0 35px, 0 0, 271px 0)
+        display: flex
+        justify-content: center
+        align-items: center
+
+        .health-bar--background
+          width: 268px
+          height: 28px
+          background: #FFF
+          clip-path: polygon(256px 14px, 116.5px 14px, 103.5px 35px, 0 35px, 0 0, 265px 0)
+
+          .health-bar--health
+            --health: 1
+            --max-health: 1
+            width: calc(var(--health) / var(--max-health) * 100%)
+            height: 28px
+            background: linear-gradient(to bottom, #9e1c4e 0%,#eb2d76 100%)
+            clip-path: polygon(100% 0, 0 0, 0 102%, calc(100% - 18px) 102%)
+            
+  .health-indicator
+    --health: '0'
+    --max-health: '0'
+    width: 90px
+    height: 26px
+    margin: 38px 0 0 189px
+    padding-right: 10px
+    background: rgba(#000, .4)
+    border-radius: 3px 0 0 3px
+    color: #FFF
+    font-size: .8em
+    line-height: 26px
+    text-align: right
+    position: absolute
+    
+    &:before
+      content: 'EXP ' var(--health)
+      margin-right: 5px
+    
+    &:after
+      content: var(--max-health)
+      margin-left: 5px
+  .character-level
+    --level: '1'
+    width: 40px
+    height: 26px
+    margin: 38px 0 0 291px
+    padding-left: 10px
+    background: rgba(#000, .4)
+    border-radius: 0 3px 3px 0
+    color: #FFF
+    font-size: .8em
+    line-height: 26px
+    position: absolute
+    
+    &:after
+      content: var(--level)
+      margin-left: 5px
+    
+  /*========================== MENU ===================================*/
+.menu
+  border: 1px solid
+  border-image: linear-gradient(to top, transparent, #f9f9f9 20%, #f9f9f9 80%, transparent) 0 0 0 1
+  margin-left: 30px
+  display: none
+  position: absolute
+  left: 390px
+  top: -118px
+
+.menu-list 
+  list-style-type: none
+  margin: 0 5px
+  padding: 0
+  position: relative
+  
+  &:before 
+    position: absolute
+    content: ''
+    border-right: 25px solid #f9f9f9
+    border-top: 10px solid transparent
+    border-bottom: 10px solid transparent
+    left: -30px
+    top: calc(50% - 10px)
+  
+  &:after
+    position: absolute
+    content: ''
+    border: 3px solid #333
+    border-radius: 50%
+    left: -15px
+    top: 50%
+    transform: translateY(-50%)
+
+
+.menu-list-item 
+  background-color: #f9f9f9
+  color: #494748
+  width: 150px
+  padding: 15px 25px
+  margin-bottom: 5px
+
+.menu-list-text 
+  background-color: inherit
+  color: inherit
+  float: right
+
+.menu-list-text:hover 
+  float: right
+
+.menu-list-item:last-child 
+  margin-bottom: 0
+
+
+.menu-list-item:hover 
+  cursor: pointer
+  background-color: #eda60c
+  color: #f9f9f9
+
+.menu-list-item:nth-child(1):hover
+  cursor: pointer
+  background-color: #ff0000
+  color: #f9f9f9
+
+.menu-list-item:nth-child(2):hover
+  cursor: pointer
+  background-color: #5ebf1d
+  color: #f9f9f9
+
+.menu-list-item:nth-child(3):hover
+  cursor: pointer
+  background-color: #eda60c
+  color: #f9f9f9
+
+.menu-list-item:nth-child(4):hover
+  cursor: pointer
+  background-color: #1dafbf
+  color: #f9f9f9
+
+.menu-list-item:nth-child(5):hover
+  cursor: pointer
+  background-color: #6710b3
+  color: #f9f9f9
+
+.menu-list-item:nth-child(6):hover
+  cursor: pointer
+  background-color: #d115a8
+  color: #f9f9f9
+
+/*====================== REVEAL =======================*/
+
+
+.reveal 
+  position: relative
+  color: #6ee1f5
+  font-size: 2em
+  font-family: Raleway, sans-serif
+  letter-spacing: 3px
+  text-transform: uppercase
+  white-space: pre
+  margin-bottom: 400px
+  span 
+    opacity: 0
+    transform: scale(0)
+    animation: fadeIn 2.4s forwards
+ 
+  &::before,
+  &::after 
+    position: absolute
+    content: ""
+    top: 0
+    bottom: 0
+    width: 2px
+    height: 100%
+    background: white
+    opacity: 0
+    transform: scale(0)
+  
+  &::before 
+    left: 50%
+    animation: slideLeft 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards
+  
+
+  &::after 
+    right: 50%
+    animation: slideRight 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards
+  
+
+
+@keyframes fadeIn 
+  to 
+    opacity: 1
+    transform: scale(1)
+  
+
+
+@keyframes slideLeft 
+  to 
+    left: -6%
+    opacity: 1
+    transform: scale(0.9)
+  
+
+@keyframes slideRight 
+  to 
+    right: -6%
+    opacity: 1
+    transform: scale(0.9)
+  
+.player-list
+  margin-top: 100px
+  td
+    padding-top: 20px
