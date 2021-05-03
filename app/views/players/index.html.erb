@@ -21,7 +21,6 @@
       
       <%= image_tag(player.character_class.downcase, class:'class-icon') %>
       <div class="sao-healthbar">
-        
         <div class="main-container">
           
           <div class="character-name">
@@ -47,17 +46,17 @@
         <% if ability.player_id == player.id%>
           <% case ability.name
               when 'Strength' %>
-              <li class="menu-list-item">Strength <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
+              <li class="menu-list-item">Strength <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-str" ></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-str"></i></li>
           <%  when 'Dexterity' %>
-              <li class="menu-list-item">Dexterity <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
+              <li class="menu-list-item">Dexterity <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-dex"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-dex"></i></li>
           <%  when 'Constitution' %>
-              <li class="menu-list-item">Constitution <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
+              <li class="menu-list-item">Constitution <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-con"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-con"></i></li>
           <%  when 'Intelligence' %>
-              <li class="menu-list-item">Intelligence <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
+              <li class="menu-list-item">Intelligence <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-int"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-int"></i></li>
           <%  when 'Wisdom' %>
-              <li class="menu-list-item">Wisdom <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
+              <li class="menu-list-item">Wisdom <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-wis"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-wis"></i></li>
           <%  when 'Charisma' %>
-              <li class="menu-list-item">Charisma <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
+              <li class="menu-list-item">Charisma <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-cha"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-cha"></i></li>
           <% end %>
         <% end %>
       <% end %>
@@ -83,3 +82,6 @@
 <br>
 
 <%= link_to 'New Player', new_player_path %>
+
+
+<%= javascript_pack_tag 'main' %>
