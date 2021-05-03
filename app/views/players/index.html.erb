@@ -30,7 +30,7 @@
             <div class="health-bar--outline">
               <div class="health-bar--border">
                 <div class="health-bar--background">
-                  <%= content_tag(:div, "", class: ["exp-bar--exp"], style: ["--exp:70;", "--max:100"] ) %>
+                  <%= content_tag(:div, "", class: ["exp-bar--exp"], style: ["--exp:#{player.experience - player.get_lvl[1]};", "--max:#{player.get_lvl[2] - player.get_lvl[1]}"] ) %>
                 </div>
               </div>
             </div>
@@ -47,17 +47,17 @@
         <% if ability.player_id == player.id%>
           <% case ability.name
               when 'Strength' %>
-              <li class="menu-list-item">Strength <span class="menu-list-text"><%= ability.level %></span></li>
+              <li class="menu-list-item">Strength <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
           <%  when 'Dexterity' %>
-              <li class="menu-list-item">Dexterity <span class="menu-list-text"><%= ability.level %></span></li>
+              <li class="menu-list-item">Dexterity <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
           <%  when 'Constitution' %>
-              <li class="menu-list-item">Constitution <span class="menu-list-text"><%= ability.level %></span></li>
+              <li class="menu-list-item">Constitution <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
           <%  when 'Intelligence' %>
-              <li class="menu-list-item">Intelligence <span class="menu-list-text"><%= ability.level %></span></li>
+              <li class="menu-list-item">Intelligence <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
           <%  when 'Wisdom' %>
-              <li class="menu-list-item">Wisdom <span class="menu-list-text"><%= ability.level %></span></li>
+              <li class="menu-list-item">Wisdom <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
           <%  when 'Charisma' %>
-              <li class="menu-list-item">Charisma <span class="menu-list-text"><%= ability.level %></span></li>
+              <li class="menu-list-item">Charisma <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up"></i></li>
           <% end %>
         <% end %>
       <% end %>
