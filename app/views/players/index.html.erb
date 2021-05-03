@@ -30,14 +30,14 @@
             <div class="health-bar--outline">
               <div class="health-bar--border">
                 <div class="health-bar--background">
-                  <%= content_tag(:div, "", class: ["health-bar--health"], style: ["--health:#{player.experience}", "--max-health:#{player.experience * 2 + 100}"] ) %> 
+                  <%= content_tag(:div, "", class: ["exp-bar--exp"], style: ["--exp:70;", "--max:100"] ) %>
                 </div>
               </div>
             </div>
         </div>
-        <%= content_tag(:div, "/", class: ["health-indicator"], style: ["--health:'#{player.experience}';", "--max-health:'#{player.experience * 2 + 100}'"] ) %>
+        <%= content_tag(:div, "/", class: ["health-indicator"], style: ["--health:'#{player.get_lvl[1]}';", "--max-health:'#{player.get_lvl[2]}';", "--exp:'#{player.experience}'"] ) %>
         <div class="character-level" style="--level: ">
-          Lv. <%= player.level %>
+          Lv. <%= player.get_lvl[0] %>
         </div>
       </div>
 

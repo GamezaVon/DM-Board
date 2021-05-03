@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-html
-
-
 body
   height: 100vh
   background: #868686
@@ -63,10 +60,10 @@ body
           background: #FFF
           clip-path: polygon(256px 14px, 116.5px 14px, 103.5px 35px, 0 35px, 0 0, 265px 0)
 
-          .health-bar--health
-            --health: 1
-            --max-health: 1
-            width: calc(var(--health) / var(--max-health) * 100%)
+          .exp-bar--exp
+            --max:1
+            --exp:1
+            width: 10px
             height: 28px
             background: linear-gradient(to bottom, #9e1c4e 0%,#eb2d76 100%)
             clip-path: polygon(100% 0, 0 0, 0 102%, calc(100% - 18px) 102%)
@@ -74,6 +71,7 @@ body
   .health-indicator
     --health: '0'
     --max-health: '0'
+    --exp: '0'
     width: 90px
     height: 26px
     margin: 38px 0 0 189px
@@ -87,7 +85,7 @@ body
     position: absolute
     
     &:before
-      content: 'EXP ' var(--health)
+      content: 'EXP ' var(--exp)
       margin-right: 5px
     
     &:after
