@@ -8,7 +8,7 @@
       <th>Name</th>
       <th>Level</th>
       <th>Experience</th>
-      <th>Player</th>
+      <th>Character</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +19,14 @@
         <td><%= ability.name %></td>
         <td><%= ability.level %></td>
         <td><%= ability.experience %></td>
-        <td><%= ability.player_id %></td>
+        <td>
+          <% @players.each do |p| %>
+            <% if(p.id == ability.player_id)  %>
+              <%= p.character_name %>
+              <% break %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', ability %></td>
         <td><%= link_to 'Edit', edit_ability_path(ability) %></td>
         <td><%= link_to 'Destroy', ability, method: :delete, data: { confirm: 'Are you sure?' } %></td>

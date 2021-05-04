@@ -4,6 +4,7 @@ class AbilitiesController < ApplicationController
   # GET /abilities or /abilities.json
   def index
     @abilities = Ability.all
+    @players = Player.all
   end
 
   # GET /abilities/1 or /abilities/1.json

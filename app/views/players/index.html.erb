@@ -5,11 +5,6 @@
   <thead>
     <tr>
       <th>Character</th>
-      <th>Experience</th>
-      <th>Race</th>
-      <th>Background</th>
-      <th>Alignment</th>
-      <th>Player name</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -46,29 +41,32 @@
         <% if ability.player_id == player.id%>
           <% case ability.name
               when 'Strength' %>
-              <li class="menu-list-item">Strength <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-str" ></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-str"></i></li>
+              <li class="menu-list-item">
+                Strength 
+                <span class="menu-list-text lvl-edit">
+                  <% ability.level = ability.level - 1  %>
+                  <%= link_to "", ability_path(ability), :params => {:ability => ability}, method: :put, class: "fas fa-angle-down" %>  
+                  <%= ability.level = ability.level + 1  %>  
+                  <% ability.level = ability.level + 1  %>
+                  <%= link_to "", ability_path(ability), method: :put, class: "fas fa-angle-up", id: "#{player.id}-up-str-#{ability.id}" %>  
+                </span>
+              </li>
           <%  when 'Dexterity' %>
-              <li class="menu-list-item">Dexterity <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-dex"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-dex"></i></li>
+              <li class="menu-list-item">Dexterity <span class="menu-list-text lvl-edit"><a class="fas fa-angle-down" id="<%= player.id %>-down-dex"></a>  <%= ability.level %>  <span><a class="fas fa-angle-up" id="<%= player.id %>-up-dex-<%= ability.id %>""></a></li>
           <%  when 'Constitution' %>
-              <li class="menu-list-item">Constitution <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-con"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-con"></i></li>
+              <li class="menu-list-item">Constitution <span class="menu-list-text lvl-edit"><a class="fas fa-angle-down" id="<%= player.id %>-down-con"></a>  <%= ability.level %>  <span><a class="fas fa-angle-up" id="<%= player.id %>-up-con-<%= ability.id %>""></a></li>
           <%  when 'Intelligence' %>
-              <li class="menu-list-item">Intelligence <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-int"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-int"></i></li>
+              <li class="menu-list-item">Intelligence <span class="menu-list-text lvl-edit"><a class="fas fa-angle-down" id="<%= player.id %>-down-int"></a>  <%= ability.level %>  <span><a class="fas fa-angle-up" id="<%= player.id %>-up-int-<%= ability.id %>""></a></li>
           <%  when 'Wisdom' %>
-              <li class="menu-list-item">Wisdom <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-wis"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-wis"></i></li>
+              <li class="menu-list-item">Wisdom <span class="menu-list-text lvl-edit"><a class="fas fa-angle-down" id="<%= player.id %>-down-wis"></a>  <%= ability.level %>  <span><a class="fas fa-angle-up" id="<%= player.id %>-up-wis-<%= ability.id %>""></a></li>
           <%  when 'Charisma' %>
-              <li class="menu-list-item">Charisma <span class="menu-list-text lvl-edit"><i class="fas fa-angle-down" id="<%= player.id %>-down-cha"></i>  <%= ability.level %>  <span><i class="fas fa-angle-up" id="<%= player.id %>-up-cha"></i></li>
+              <li class="menu-list-item">Charisma <span class="menu-list-text lvl-edit"><a class="fas fa-angle-down" id="<%= player.id %>-down-cha"></a>  <%= ability.level %>  <span><a class="fas fa-angle-up" id="<%= player.id %>-up-cha-<%= ability.id %>""></a></li>
           <% end %>
         <% end %>
       <% end %>
         </ul>
       </div>
       </td>
-
-        <td><%= player.experience %></td>
-        <td><%= player.race %></td>
-        <td><%= player.background %></td>
-        <td><%= player.alignment %></td>
-        <td><%= player.player_name %></td>
         <td>
         <%= link_to 'Show', player %><br>
         <%= link_to 'Edit', edit_player_path(player) %><br>
